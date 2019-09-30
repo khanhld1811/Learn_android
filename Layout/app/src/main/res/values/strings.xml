@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Layout</string>
+    <string name="linear_layout">LinearLayout</string>
+    <string name="relative_layout">RelativeLayout</string>
+    <string name="grid_layout">GridLayout</string>
+    <string name="table_layout">TableLayout</string>
+    <string name="frame_layout">FrameLayout</string>
+    <string name="constraint_layout">ConstraintLayout</string>
+
+    // number layout
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+
+    // table layout
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="input_email">Nhập email</string>
+    <string name="input_password">Nhập mật khẩu</string>
+</resources>
