@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:shrinkColumns="0"
     android:stretchColumns="1"
-    tools:context=".TableLayout">
+    tools:context=".Layout.TableLayout">
 
     <TableRow>
         <TextView

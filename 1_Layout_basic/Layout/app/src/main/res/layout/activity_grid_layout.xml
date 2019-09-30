@@ -7,7 +7,7 @@
     android:columnCount="2"
     android:rowCount="2"
     android:orientation="vertical"
-    tools:context=".GridLayout">
+    tools:context=".Layout.GridLayout">
     <TextView
         android:id="@+id/txt_one"
         android:layout_width="100dp"

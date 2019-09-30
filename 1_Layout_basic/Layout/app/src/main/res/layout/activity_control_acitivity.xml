@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ViewMain.ControlAcitivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/name"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:hint="@string/username"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_android_black_24dp"
+            android:drawablePadding="@dimen/activity_horizontal_padding"
+            android:layout_marginTop="5dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/atv_name"
+            android:hint="@string/username"
+            android:layout_gravity="center"
+            android:completionHint="@string/name"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/btnWaring"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:paddingTop="@dimen/activity_horizontal_padding"
+            android:paddingBottom="@dimen/activity_horizontal_padding"
+            android:src="@drawable/ic_warning_black_24dp"
+            android:background="@color/colorOrangred"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="@dimen/width_height_layout"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/chk_soccer"
+            android:layout_weight="1"
+            android:text="Đá bong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/chk_checkbox_basketball"
+            android:text="Bóng rổ"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/chk_checkbox_baminton"
+            android:text="Cầu lông"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ToggleButton
+            android:layout_gravity="center"
+            android:layout_width="@dimen/width_height_layout"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:text="Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:text="Nữ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_width="@dimen/width_height_layout"
+            android:layout_height="wrap_content"/>
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/width_height_layout"
+            android:layout_height="wrap_content"/>
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_marginTop="@dimen/activity_horizontal_padding"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/width_height_layout"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

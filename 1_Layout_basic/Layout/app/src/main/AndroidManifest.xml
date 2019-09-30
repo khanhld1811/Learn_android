@@ -9,20 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AbsoluteLayout"></activity>
-        <activity android:name=".FrameLayout" />
-        <activity android:name=".ConstraintLayout" />
-        <activity android:name=".TableLayout" />
-        <activity android:name=".GridLayout" />
-        <activity android:name=".RelativeLayout" />
-        <activity android:name=".LinearLayout" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ViewMain.ControlAcitivity"></activity>
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Layout.AbsoluteLayout" />
+        <activity android:name=".Layout.FrameLayout" />
+        <activity android:name=".Layout.ConstraintLayout" />
+        <activity android:name=".Layout.TableLayout" />
+        <activity android:name=".Layout.GridLayout" />
+        <activity android:name=".Layout.RelativeLayout" />
+        <activity android:name=".Layout.LinearLayout" />
+        <activity android:name=".ViewMain.LayoutActivity"/>
     </application>
 
 </manifest>
