@@ -1,5 +1,5 @@
 1. AdapterView
-    - các view dùng để hiển thị tập hợp nhiều item tr một view
+    - các view dùng để hiển thị tập hợp nhiều item trên một view
 
 2. Adapter
     - Dùng để đổ dữ liệu lên Adapter. Tùy theo loại dữ liệu mà ta chọn
