@@ -1,0 +1,28 @@
+1. AdapterView
+    - các view dùng để hiển thị tập hợp nhiều item treenn một view
+
+2. Adapter
+    - Dùng để đổ dữ liệu lên Adapter. Tùy theo loại dữ liệu mà ta chọn
+    lựa adapter phù hợp.
+    - liên kết DataSource với AdapterView
+
+* DataSource có thể là: Cursor,Array, ArrayList...
+* AdapterView có thể là: ListView, GridView, Spinner, Gallery, AutoCompleteTextView....
+
+3. Một số AdapterView
+    - Spinner : cho phép chọn 1 giá trị trong 1 tập hợp,
+                hiển thị như 1 drowpdow menu cho phép chọn 1 mục con
+
+    - ListView : hiển thị một danh sách có thể cuộn xuống
+
+    - Gridview: hiển thị danh sách theo kiểu ô lưới 2 chiều
+
+    - Gallery: hiển thị danh sách dạng center-locked, dùng để cuộn ngang danh sach
+
+    - AutoCompleteTextView: như textview nhưng khi nhập sẽ hiện ra 1 list gợi ý
+
+
+* BaseAdapter
+    - getCount: trả về số lượng item được hiển thị
+    - getView: gọi tự động các mục danh sách để sẵn sàng hiển thị. Thiết lập layout cho danh sách
+                các mục bằng các sử dụng lớp LayoutInflater và sau đó thêm dữ liệu cho các view: ImageView, AutoCompleteTextView....

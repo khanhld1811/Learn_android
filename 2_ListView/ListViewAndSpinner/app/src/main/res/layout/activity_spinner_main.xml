@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    tools:context=".view.SpinnerMainActivity">
+
+    <Button
+        android:id="@+id/btnSpinnerBasic"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Spinner Basic"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="159dp" />
+
+    <Button
+        android:id="@+id/btnCustomSpinner"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_paddingHorizontal"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAccent"
+        android:text="Custom Spinner"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="286dp" />
+</LinearLayout>
