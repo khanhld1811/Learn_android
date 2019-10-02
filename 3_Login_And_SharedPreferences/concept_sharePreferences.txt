@@ -1,10 +1,10 @@
 I. Shared preferences
-    - Lưu trữ dữ liệu nguyên thủy riêng tư trong các cặp khóa - giá trị.
+    - Lưu trữ dữ liệu nguyên thủy riêng tư trong các cặp key-values.
     - Gắn liền với vòng đời ứng dụng
 
 1.Sử dụng:  + dùng khi không yêu cầu nhiều dữ liệu hay cấu trúc
             + Đọc ghi các cặp giá trị khóa -> booleans, float, ints, longs, string.
-            + cặp khóa-gt -> ghi vào XML 
+            + cặp key-values -> ghi vào XML 
 
 2. Key - value
 
@@ -12,12 +12,12 @@ I. Shared preferences
                                với tham số dầu tiên. có thể gọi từ bất kỳ context trong ứng dụng
     
     - getPreferences()        : Chỉ sử dụng 1 tệp sharedPreferences cho 1 hoạt động. Vì nó lấy 1 sharedPreferences
-                               mặc định thuộc về hoạt động,không  cần cung cấp tên.
+                               mặc định thuộc về hoạt động,không cần cung cấp tên.
 
 3. Write to sharedPreferences
 
     - SharedPreferences.Editor -> gọi edit() ->
-    - putInt or putString,.... -> Truền vào cặp key-value
+    - putInt or putString,.... -> Truyền vào cặp key-value
     - Sau tất cả -> gọi apply() or commit() 
     - apply() : Lưu dữ liệu bất đồng bộ -> không quan tâm giá trị trả về
     - commit(): Lưu dữ liệu đồng bộ 
