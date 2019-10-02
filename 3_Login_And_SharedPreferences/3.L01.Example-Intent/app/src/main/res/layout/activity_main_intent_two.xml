@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Intents.MainIntentTwoActivity">
+
+    <Button
+        android:id="@+id/btn_openWebPage"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:background="@color/colorAccent"
+        android:text="OPEN WEBPAGE"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_openLocalMap"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_openLocalMap"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_shareText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorBlue"
+        android:text="ShareText"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openLocalMap" />
+
+    <Button
+        android:id="@+id/btn_openLocalMap"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@color/colorPrimary"
+        android:text="OpenLocalMap"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_shareText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_shareText"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openWebPage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

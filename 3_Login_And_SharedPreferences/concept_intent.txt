@@ -1,0 +1,27 @@
+1. Intent
+    - Là 1 đối tượng nhắn tin -> gửi yêu cầu, hành động từ 1 app component khác
+    - Có 3 trường hợp co bản:
+        + Starting a activity
+            * Bắt đầu một activity mới -> startActivity
+            * Muốn nhận kết quả khi 1 activity kết thúc -> startActivityForResult()
+            * Nhận kết quả trả về -> onActivityResult()
+
+        + Starting a service
+            * Bắt đầu một service -> startService().
+
+        + Deliverling a broadcast
+            * Gửi thông điệp -> all apps đều có thể nhận -> sendBroadcast() hoặc sendOrderedBroadcast()/
+
+        
+2 Kiểu Intent  
+    - Explicit intents:
+        + Khởi chạy -> thành phần ứng dụng cụ thể -> hoạt động, dịch vụ ->  định ngĩa tên thành phần cho obj Intent
+
+    - Implicit intents: ( Không quan tâm nó là ai -> chỉ cần làm được làm được việc thì anh gọi hết)
+        +  Khởi chạy -> Bất cứ ứng dụng nào có thể thực hiện hành động
+                     -> Có 1 ứng dụng -> auto run
+                     -> Nhiều ứng dụng -> chọn 1 ứng dụng trong box 
+            * Chú ý : vì một lý do nào đó không có ứng dụng nào xử lý -> để xác minh một 
+                      hoạt động nhận được intent -> gọi resolveActivity()
+                      + nếu có -> startActivity
+                      + không có (null) -> không sử dụng intent -> nên vô hiệu hóa hành động đó 
