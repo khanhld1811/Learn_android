@@ -1,0 +1,48 @@
+Tiến trình
+I. Tổng quan
+
+ - Một chương trình đang được chạy trong hệ thống
+ - Mỗi process cung cấp tài nguyên thực thi chương trình.
+ - Có ít nhất 1 Thread thực thi.
+
+Thread
+I. Overview
+ 
+- Chạy app -> process(chưa chạy bởi component nào) -> tạo 1 thread (main thread)
+
+1. Main thread
+    - tương tác phía giao diện người dùng
+    - vẽ các sự kiện và update lại các giao diện người dùng. -> đôi khi còn được gọi là UI thread
+    - có nhiều hơn 1 thread sử là ui thì không thể gọi là UI thread
+2. UI thread
+    - tất cả component chạy trong cùng tiến trình đều được khởi tạo trong UI thread
+
+    vd: chạm button trên màn hình (UI thread)-> phân phối sự kiện chạm -> widget
+
+=> Khi ứng dụng thực hiện công việc nặng để phản hồi tương tác người dùng  -> dung 1 luồng -> hiệu năng kém
+    
+    vd:truy cập mạng, truy vấn database -> chặn UI thread -> không thể hiển thị giao diện (vẽ giao diện) -> Ứng dụng như đang bị treo
+       => UI thread chặn lâu hơn vài giây (5 giây) -> hộp thoại không phản hồi
+
+3. Quy tắc
+    + Không được chặn luồng UI
+    + Không được truy cập bộ công cụ UI của Android từ bên ngoài luông UI
+
+4. Một số phương pháp truy cập UI thread:
+
+    + Activity.runonUiThread(Runnable)
+    + View.post(Runnable)
+    + View.postDelayed(Runnable, long)
+
+- Tất cả component chạy trên 1 process -> khởi tạo trên UI thread
+- Các phương thứ callback :
+    + onKeyDown()
+    + onStart()
+    + onStop()
+
+Handler
+ I. Tổng quan
+    
+    1. 
+
+

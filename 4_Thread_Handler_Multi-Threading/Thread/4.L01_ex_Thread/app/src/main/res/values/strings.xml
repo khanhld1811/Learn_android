@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">4.L01_ex_Thread</string>
+    <string name="hello">Hello World, ThreadsDemoActivity!</string>
+</resources>
