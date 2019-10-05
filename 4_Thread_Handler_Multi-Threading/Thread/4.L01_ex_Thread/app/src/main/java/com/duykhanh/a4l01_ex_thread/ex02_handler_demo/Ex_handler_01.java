@@ -30,7 +30,6 @@ public class Ex_handler_01 extends AppCompatActivity implements View.OnClickList
         listenerHandler();
     }
 
-
     private void initViews() {
         mTextNumber = findViewById(R.id.text_number);
         findViewById(R.id.button_count).setOnClickListener(this);

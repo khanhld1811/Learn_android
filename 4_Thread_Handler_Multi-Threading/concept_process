@@ -7,7 +7,8 @@ I. Tổng quan
 
 Thread
 I. Overview
- 
+- Là một đơn vị thự thi song song.
+
 - Chạy app -> process(chưa chạy bởi component nào) -> tạo 1 thread (main thread)
 
 1. Main thread
@@ -26,7 +27,7 @@ I. Overview
 
 3. Quy tắc
     + Không được chặn luồng UI
-    + Không được truy cập bộ công cụ UI của Android từ bên ngoài luông UI
+    + Không được truy cập bộ công cụ UI của Android  trừ luồng UI
 
 4. Một số phương pháp truy cập UI thread:
 
@@ -41,8 +42,69 @@ I. Overview
     + onStop()
 
 Handler
+
+ * Ngoài lề:
+    - Android xử lý tất cả hoạt động UI và các sự kiện đầu vào từ một luồng duy nhất (main thread or ui thread)
+    -> android thu thập tất cả sự kiện này trong một hàng đợi(queue) và xử lý hàng đợi (processes thí queue) with
+       an instance of the Looper class.
+
+*  Tại sao lại cần đến thằng này:
+    - Không thể nào trọc vào thằng giao diện bằng cách thông thường (đó là luật ok).
+    - Vì vậy mà android mới phải sinh ra Handler và còn 1 thằng tên Asynctask nửa
+
  I. Tổng quan
+
+    - Để các thread con tương tác với thread chính -> thông qua 1 handler
+    - Cho phép gửi và xử lý "Message" và các obj Runnable liên kết với một luồng
+       MessageQueue. 
+
+ II. Các hoạt động
+    -  Lên lịch thực thi các Message và Runnable ở các thời điểm trong tương lai.
+    -  Sắp xếp một hành động được thực hiện trong một Thread khác
+
+        * MessageQueue : hàng đợi -> nắm trong tay danh sách Message do thằng Looper gửi tới.(cần thực thi)
+                         Tất nhiên đâu phải muốn vào là vào -> là sa0??? 
+                         phải qua tay 2 anh Handler + Looper (cứ như đi phỏng vấn không bằng).
+
+AsyncTask
+I. Tổng quan
+
+    1. Cú pháp
+        AsyncTask<Params, ProgessValue, ResultValue>
+        + Params: truyền vào hàm doInBackground() như input.
+        + ProgessValue:  Là giá trị (biến) dùng để update giao diện diện lúc tiến trình thực thi, biến này sẽ được truyền vào hàm onProgressUpdate.
+            * nhận được qua doInBackground() qua phương thức publishProgress().
+        + ResultValue: trả về từ doInBackground() và truyền vào onPostExecute() như đối số.
+
+    2. Tính năng
+        + Anh không thích làm theo quy tắc -> anh thích bất quy tắc (trong này là bất đồng bộ) -> lên giao diện 
     
-    1. 
+    3. Sử dụng
+        + Muốn dùng anh 
+            -> thì phải gọi tên của anh (AsyncTask) 
+            -> Chiêu doInBackground() chạy trong tập hợp các luồng chạy ngầm của anh
+            -> Muốn cập nhật UI chúng bay phải gọi chiêu onPostExecute() -> chiêu chạy ngầm của anh sẽ 
+               trả về cái gì đó anh không biết(doInBackground()) -> đem nó đặt vào thằng UI vì 
+               chỉ có chiêu đó(onPostExecute()) mới có thể sờ vào UI một cách an toàn.
+            -> Tiếp đến gọi chiều cuối execute() từ luồng UI để khởi động cái nãy h chúng bay đang làm ấy.
+
+    4. Phương thức
+        + onPreExecute(): gọi trên UI thread trước khi tác vụ thực thi. Thường dùng để thiết lập tác vụ.
+            vd: Hiển thị 1 ProgressBar trong giao diện người dùng.
+
+        + doInBackground(Params...) : gọi ngay khi onPreExecute() kết thúc thực thi.
+                                     Thằng này cần phải dùng não để tính nhiều nên mất nhiều thời gian.
+                                     Tính xong nó trả về cái mà nó vừa tính xong bằng "return" hoặc "publishProgress(Progress...).
+                                     -> onProgressUpdate(Progress...) nhận lệnh thự thi kết quả kể trên.
+    
+        + onProgressUpdate : Anh đây võ công cao cường không có đối thủ (Không giới hạn thời gian) .
+                             Anh thể hiện sự tiến bộ trong võ công khi đang luyện môn võ nào đó chưa có xong (doInBackground() đang tính toán).
+                                vd : làm động một thanh ProgressBar làm cho nó chạy hoặc hiển thị nhật ký trong trường văn bản.
+
+        + onPostExecute(Result): gọi trên UI thread khi doInBackground() tính xong -> có thể cập nhật kết quả đó lên UI.
+
+        + cancel(boolean): hủy một task (nhiệm vụ).
+
+
 
 
