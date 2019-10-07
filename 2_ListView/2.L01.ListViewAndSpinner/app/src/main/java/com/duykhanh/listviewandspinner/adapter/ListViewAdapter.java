@@ -1,6 +1,7 @@
 package com.duykhanh.listviewandspinner.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<Contact> {
 
+    private static final String TAG = ListViewAdapter.class.getSimpleName();
     private Context context;
     private int resource;
     private List<Contact> arrContact;
@@ -32,6 +34,7 @@ public class ListViewAdapter extends ArrayAdapter<Contact> {
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
 
         ViewHolder viewHolder;
+        Log.d(TAG, "getView: "+view);
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_listview, parent, false);
             viewHolder = new ViewHolder();

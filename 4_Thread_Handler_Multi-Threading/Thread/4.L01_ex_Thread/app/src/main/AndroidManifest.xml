@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.duykhanh.a4l01_ex_thread">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ex04_download_demo.DownloadFileDemo">
+        </activity>
+        <activity android:name=".ex02_handler_demo.Ex_handler_02">
+        </activity>
         <activity android:name=".ex03_async_demo.Ex_asynctask_demo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ex02_handler_demo.Ex_handler_01"></activity>
+        <activity android:name=".ex02_handler_demo.Ex_handler_01" />
         <activity android:name=".ex01_thread_demo.Ex_thread_01" />
         <activity android:name=".ex03_async_demo.AsyncDemo" />
         <activity android:name=".ex01_thread_demo.ThreadDemo" />
         <activity android:name=".ex03_async_demo.RotationAsyncDemo" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

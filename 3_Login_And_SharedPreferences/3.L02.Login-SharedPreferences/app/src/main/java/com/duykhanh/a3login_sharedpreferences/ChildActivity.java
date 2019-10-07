@@ -16,6 +16,7 @@ public class ChildActivity extends AppCompatActivity {
     private TextView tvUserName, tvPassword;
     private SharedPreferences sharedPreferencesLogout;
     private SharedPreferences.Editor editorClearData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
