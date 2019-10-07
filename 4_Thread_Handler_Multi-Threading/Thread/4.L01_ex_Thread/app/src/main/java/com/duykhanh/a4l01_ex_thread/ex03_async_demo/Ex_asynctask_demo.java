@@ -167,11 +167,6 @@ public class Ex_asynctask_demo extends AppCompatActivity {
 
         }
 
-        /*
-        * Phương thức đồng bộ nói với UI thread -> udpate UI.
-        * Nó sẽ chạy khi doInBackground kết thúc.
-        */
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);

@@ -10,8 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ex04_download_demo.DownloadFileDemo">
-        </activity>
         <activity android:name=".ex02_handler_demo.Ex_handler_02">
         </activity>
         <activity android:name=".ex03_async_demo.Ex_asynctask_demo">
