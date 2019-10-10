@@ -23,6 +23,8 @@
 
 
 * BaseAdapter
-    - getCount: trả về số lượng item được hiển thị
+    - getCount: Số lượng view cụ thể đổ lên AdapterView
+    - getItem(int i) : Lấy data tại vị trí xác định
+    - getItemId(int i): vị trí item trong adapter
     - getView: gọi tự động các mục danh sách để sẵn sàng hiển thị. Thiết lập layout cho danh sách
                 các mục bằng các sử dụng lớp LayoutInflater và sau đó thêm dữ liệu cho các view: ImageView, AutoCompleteTextView....

@@ -1,17 +1,12 @@
 package com.duykhanh.listviewandspinner.view;
 
-import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.duykhanh.listviewandspinner.R;
 import com.duykhanh.listviewandspinner.adapter.ListViewAdapter;
-import com.duykhanh.listviewandspinner.data.Cheeses;
 import com.duykhanh.listviewandspinner.model.Contact;
 
 import java.util.ArrayList;

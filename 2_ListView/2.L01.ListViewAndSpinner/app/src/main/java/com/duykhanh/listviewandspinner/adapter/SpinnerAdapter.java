@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.duykhanh.listviewandspinner.R;
-import com.duykhanh.listviewandspinner.model.Contact;
 import com.duykhanh.listviewandspinner.model.Country;
 
 import java.util.List;
@@ -49,6 +48,26 @@ public class SpinnerAdapter extends ArrayAdapter<Country> {
 
         if (countryItem != null) {
             imageViewFlag.setImageResource(countryItem.getFlagImage());
+            textViewName.setText(countryItem.getCountryName());
+        }
+
+        return convertView;
+    }
+
+    private View initView2(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.item_spinner, parent, false
+            );
+        }
+
+        ImageView imageViewFlag = convertView.findViewById(R.id.image_view_flag);
+        TextView textViewName = convertView.findViewById(R.id.text_view_name);
+
+        Country countryItem = getItem(position);
+
+        if (countryItem != null) {
+
             textViewName.setText(countryItem.getCountryName());
         }
 

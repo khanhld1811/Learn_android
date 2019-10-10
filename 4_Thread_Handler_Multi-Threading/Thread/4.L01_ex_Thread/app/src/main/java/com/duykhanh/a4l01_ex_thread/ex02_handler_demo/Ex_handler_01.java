@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +42,18 @@ public class Ex_handler_01 extends AppCompatActivity implements View.OnClickList
             public void run() {
                 for (int i = 0; i <= 10; i++) {
                     Message message = new Message();
+                    /*
+                    * Mã tin nhắn định nghĩa để có thể xác định nội dung
+                    * của tin nhắn này
+                    */
                     message.what = MSG_UPDATE_NUMBER;
+                    /*
+                    * arg1 lưu trữ giá trị số nguyên
+                    */
                     message.arg1 = i;
+                    /*
+                    * Gửi message
+                    */
                     mHandler.sendMessage(message);
                     try {
                         Thread.sleep(1000);
@@ -50,15 +61,21 @@ public class Ex_handler_01 extends AppCompatActivity implements View.OnClickList
                         e.printStackTrace();
                     }
                 }
+                /*
+                * Gửi mã tin nhắn
+                */
                 mHandler.sendEmptyMessage(MSG_UPDATE_NUMBER_DONE);
             }
         }).start();
     }
 
+    //TODO (3) Lắng nghe kết quả trả về từ Worker Thread
     private void listenerHandler() {
+
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(@NonNull Message msg) {
+                Log.d("LOOPER", "listenerHandler: "+Looper.getMainLooper());
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case MSG_UPDATE_NUMBER:
@@ -80,7 +97,7 @@ public class Ex_handler_01 extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_count:
-                Toast.makeText(this, "" + mIsCounting, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "" + !mIsCounting, Toast.LENGTH_SHORT).show();
                 if (!mIsCounting) {
                     countNumbers();
                 }

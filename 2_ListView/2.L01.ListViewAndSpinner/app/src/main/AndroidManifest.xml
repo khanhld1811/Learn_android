@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.CustomSpinnerActivity"></activity>
+        <activity android:name=".view.DemoBaseAdapterActivity">
+
+        </activity>
+        <activity android:name=".view.CustomSpinnerActivity" />
         <activity android:name=".view.SpinnerMainActivity" />
         <activity android:name=".view.SpinnerBasicActivity" />
         <activity android:name=".view.ListViewMainActivity" />

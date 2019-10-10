@@ -1,0 +1,63 @@
+I. Tổng quan
+    - 1 trong 4 component android
+    - Nhận các sự kiện ứng dụng, hệ thống phát đi
+
+II. Vòng đời
+    - Có sự kiện mà Broadcast Receiver -> nhận -> onReciver() -> kết thúc 
+    =>  + tránh sử lý tốn thời gian.
+        + xử lý bất đồng bộ, callback,.. (dialog, kết nối service)
+
+III. Broadcast System
+
+    - Gửi sự kiện dạng Intent
+        
+        + Intent.ACTION_BOOT_COMPLETED
+        + Intent.ACTION_BATTERY_LOW
+        + Intent.ACTION_BATTERY_OKAY
+
+    - Một số broadcast phổ biến
+        
+        + Báo hệ thống khởi động xong
+        + Báo pin có sự thay đổi
+        + Báo tắt máy
+        + Báo cắm rút sạc
+        + Báo có package mới được cài vào hay xóa đi 
+        + Thông báo tin nhắn tới
+
+=> Có thể định nghĩa broacast riêng mình -> liên lạc, đưa ra thông báo sự kiện tới app khác..
+
+IV. Sử dụng
+
+    - onRecive(Context context, Intent intent): gọi khi có sự kiện phát đi. 
+    - Đăng ký Manifest -> <receiver>//content</receiver>
+    - Đăng ký code     -> Context.registerReceiver()    -> onResume() của activity
+                       -> Context.unregisterReceiver()  -> onPause()
+    - Disable receiver: PackageManager
+
+V. Hạn chế
+    - Kết thúc trước 10 giây -> ARN exeption
+    - Android 3.1 trở đi -> bỏ receiver intent nếu -> chưa start, stop bởi người dùng
+
+VI. Bảo mật
+    - Không muốn gửi broadcast -> LocalBroadcastManager
+    - Intent namespace là global -> ten intent action là duy nhất -> tránh xung đột
+    - registerReceiver(BroadcastReceiver, IntentFilter) -> gửi tới receiver đã được đăng ký
+    - publish receiver trong AndroidManifest -> bất kể ứng dụng nào cũng có thể gửi
+    - andorid:exported = "false" -> ngăn ứng dụng khác gửi yêu cầu, sử dụng
+    - ICE_CREAM_SANDWICH -> hạn chế broadcast tới một app cụ thể sử dụng -> Intent.setPackage
+
+
+VII. Xu ly bao mat
+    1 LocalBroadcastManager : ko muốn send cho các ứng dụng ngoài
+    2.Không phát thông tin nhạy cảm bằng intent không tường minh.
+
+         + set quyền Broadcast
+         + set package muốn gửi Broadcast
+         + LocalBroadcastManager
+    3. 
+        + set exported = true: ngăn ứng dụng khác gửi yêu cầu sử dụng
+        + LocalBroadcastManager
+    4. Không nên chạy task trong onRecive()
+        + goAsync() trong onRecive
+        + JobScheduler
+        

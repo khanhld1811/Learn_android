@@ -1,0 +1,13 @@
+I. Tổng quan
+    - 1 trong 4 thành phần chính của android
+    - Chạy ngầm trong hệ điều hành
+    - Thực hiện các tác vụ dài hạn
+    - Không giao diện
+    - Không bị kill khi chuyển ứng dụng
+
+vd: chơi nhạc, download,.....
+
+II. Phân loại
+    - Có 3 loại:
+        + Foreground Service: có giao diện dưới dạng notifycaction có thể tương tác với người dùng
+        

@@ -1,0 +1,30 @@
+I. Tổng quan
+
+    - Là 1 trong 4 component android
+    - Quản lý, chía sẻ dữ liệu giữa các ứng dụng
+    - Tập dữ liệu với xung quanh nó là api component có thể cho phép đọc và ghi
+    - 2 loại
+        + Native content provider: Quyền truy cập dữ liệu có sẵn: Contacts, Mediaplayer,
+          cần cấp quyền để truy cập
+        + Custom content provider: custom db tự ạo bởi developer phù hợp các yêu cầu app        
+
+II. Truy vấn
+    - ContentResolver:
+        + Quản lý dữ liệu ứng dụng đó, ứng dụng khác.
+        + Cung cấp câu lệnh truy vấn:
+                                        * query : nhận yêu cầu phía client.-> trả về 1 con trỏ
+                                        * insert: chèn dữ liệu vào content provider
+                                        * delete: xóa 1 dòng dữ liệu đã có
+                                        * update : cập nhận dòng dữ liệu đã tồn tại
+III. Content uri
+    - Tên một content provider.(quyền hạn) 
+    - Tên đường dẫn
+    - id: chỉ định rõ bản ghi trong tập hợp dữ liệu.
+     vd: content://authority/path/id
+
+IV. Tác dụng
+    - Chia sẽ dữ liệu từ nguồn db duy nhất mà app cung cấpI.
+    - Kiểm xoát truy cập bằng cách chỉ định permission cho app khác truy cập
+    - Độc lập dữ liệu và giao diện
+
+                                    
