@@ -1,0 +1,32 @@
+I. một số thuộc tính relative layout
+
+- android:gravity
+    + center            : căn giữa
+    + top               : phía trên
+    + bottom            : phía dưới
+    + center_horizontal : ở giữa theo chiều ngang
+    + center_vertical   : ở giữa theo chiều dọc
+    + left              : theo cạnh trái
+    + right             : theo cạnh phải
+    + bottom            : theo cạnh dưới
+
+- android:layout_alignParentBottom  : true - view con nằm ở cạnh dưới view cha
+- android:layout_alignParentLeft    : true - view con nằm ở cạnh trái view cha
+- android:layout_alignParentRight   : true - view con nằm ở cạnh phải view cha
+- android:layout_alignParentTop     : true - view con nằm ở cạnh trên view cha
+- android:layout_alignParentStart   : true - view con nằm ở cạnh
+- android:layout_centerInParent     : true - nằm ở trung tâm view cha
+- android:layout_centerHorizontal   : true - nằm ở giữa view cha theo chiều ngang
+- android:layout_centerVertical     : true = nằm ở giữa view cha theo chiều dọc
+
+
+- android:layout_below              : nằm phía dưới ID chỉ định
+- android:layout_above              : nằm phía trên ID chỉ định
+- android:layout_toLeftOf           : nằm bên trái ID chỉ định
+- android:layout_toRightOf          : nằm bên phải ID chỉ định
+- android:layout_alignBottom        : cạnh dưới khớp với cạnh dưới ID  chỉ định
+- android:layout_alignTop           : cạnh trên khớp với cạnh trên ID chỉ định
+- android:layout_alignLeft          : căn thẳng cạnh trái với cạnh trái ID chỉ định 
+- android:layout_alignRight         : căn thẳng cạnh phải với cạnh pahir ID chỉ định
+
+
