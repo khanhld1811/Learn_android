@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">9.L01.SQLite</string>
+    <string name="name_student">Name</string>
+    <string name="address_student">Address</string>
+    <string name="phone_number_student">Phone number</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

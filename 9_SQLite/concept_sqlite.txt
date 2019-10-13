@@ -1,0 +1,21 @@
+I. Tổng quan
+    - Cơ sở dữ liệu cục bộ trên ứng dụng
+    - Không cần máy chủ
+    - Data lưu dạng tệp văn bản
+    - Mã nguồn mở, miễn phí
+    - Có sẵn trong android
+
+II Ưu điểm
+ + Không cần cài đặt cấu hình
+ + Kích thước nhỏ gọn
+ + Không cần phần mềm phụ trợ
+ + Tự do với mã nguồn
+ + Data lưu vào 1 file
+ + Không khái niệm user, passwork hay quyền hạng
+
+ III. Sử dụng
+    
+    SQLiteOpenHelper: Lớp trợ giúp tạo ra CSDL, quản lý phiên bản
+    SQLiteDatabase : phương thức quản lý CSDL:INSERT, UPDATE, DELETE, SELECT,...
+
+    
