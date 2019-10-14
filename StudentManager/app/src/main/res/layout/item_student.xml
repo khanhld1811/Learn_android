@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/margin_padding_size_small"
+    android:background="@color/colorPrimary"
+    app:cardCornerRadius="@dimen/margin_padding_size_small"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:padding="@dimen/margin_padding_size_medium"
+        android:background="@drawable/bg_item_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt_name_student"
+            android:text="Tên sinh viên"
+            android:textColor="@color/colorBlack"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txt_code_student"
+            android:layout_below="@id/txt_name_student"
+            android:text="Mã sinh viên"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/img_delete_student"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_clear"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

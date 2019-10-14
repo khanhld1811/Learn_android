@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">StudentManager</string>
+
+    <string name="list_student">Student</string>
+    <string name="search_student">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_code_student">Mã sinh viên</string>
+    <string name="text_fullname_student">Họ tên</string>
+    <string name="text_birthday_student">Năm sinh</string>
+    <string name="text_address_student">Quê quán</string>
+    <string name="text_gender_student">Giới tính</string>
+
+    // button
+    <string name="btn_add_student">Thêm sinh viên</string>
+    <string name="btn_clear_student">Xoá</string>
+
+    <string name="btn_update_student">Cập nhật</string>
+</resources>
