@@ -3,11 +3,15 @@ package com.duykhanh.studentmanager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.duykhanh.studentmanager.View.fragment.FragmentSearch;
 import com.duykhanh.studentmanager.View.fragment.FragmentStudent;
@@ -15,16 +19,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActionBar toolbar;
     BottomNavigationView bottomNavigationView;
-
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = getSupportActionBar();
+        toolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         /*
          * Khởi tạo hàm ánh xạ view
@@ -84,4 +87,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 }

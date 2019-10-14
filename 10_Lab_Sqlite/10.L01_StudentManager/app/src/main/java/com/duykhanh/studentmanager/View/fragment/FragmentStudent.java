@@ -4,12 +4,18 @@ package com.duykhanh.studentmanager.View.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -49,9 +55,11 @@ public class FragmentStudent extends Fragment implements View.OnClickListener, R
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_fragment_student, container, false);
 
+
         initView();
         onClickView();
         initializationObject();
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -119,4 +127,27 @@ public class FragmentStudent extends Fragment implements View.OnClickListener, R
         studentList.addAll(daoStudent.getAllStudent());
         adapterStudent.notifyDataSetChanged();
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_student,menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterStudent.getFilter().filter(newText);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
 }
