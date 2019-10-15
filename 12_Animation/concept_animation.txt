@@ -1,0 +1,55 @@
+I. Tổng quan
+
+    - Là sự biến dổi màu sắc, vị trí, kích thước của một đối tượng trên màn hình theo thời gian
+    - Có 3 loại hệ thống animation
+        + Property Animation
+        + View Animation
+        + Drawable Animation
+
+II. Property Animation
+
+    - Thiết lập đặc tính animation:
+        + Duration: Thời lượng
+        + Time interpolation: Phép nội suy thời gian
+        + Repeat count and behavior: số lần lặp và cách thức lặp lại
+        + Animation sets: Nhóm các animation thành các bộ
+        + Frame refersh delay: Độ trễ làm tương khung hình
+
+    - Có thể thay đổi bất kỳ thuộc tính nào
+
+    - Có 3 class chính: 
+        + ValueAnimator
+        + ObjectAnimator
+        + AnimatorSet
+
+1. AnimatorSet  
+    - Load hiệu ứng có sẵn ở file xml rồi gắn target(view hay đối tượng...) -> chạy hiệu ứng thiết lập sẵn
+
+        VD: Hiệu ứng cho mặt trời di chuyển đi lại trong 3s và lặp đi lặp lại.
+
+2. ValueAnimator
+    - Là lớp chính property -> tính toán chính xác giá trị của một hiệu ứng
+        + thời gian
+        + lặp lại
+        + lắng nghe các sự kiện để cập nhật
+
+
+3. ObjectAnimator
+    - Là lớp con của ValueAnimator.
+
+
+II.View Animation
+    - Biến đổi đơn giản nội dung của 1 view (position, size, rotation)
+    - Có thể tạo ra 2 loại animation:
+        + Tween animation: Tạo animation bằng 1 view duy nhất
+        + Frame animation: Tạo animation bằng nhiều view với thứ tự nhất định
+    
+    VD: TextView -> di chuyển , xoay, to lên, co lại,...
+
+    - Nhược điểm: chỉ có thể thay đổi view khi view đã được vẽ
+    - Ít thời gian và ít code hơn
+
+III.Drawable Animation
+
+    - Nhiều hình ảnh hiển thị trong 1 khoảng thời gian ngắn tạo ra hiệu ứng chuyển động hoặc biến đổi
+    - Animation này -> thông qua lớp AnimationDrawable
