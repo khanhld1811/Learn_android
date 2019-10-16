@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ex02_BoundService.BoundServiceActivity"></activity>
+        <activity android:name=".view.ex03_ForegroundService.ForegroundServiceActivity"></activity>
+        <activity android:name=".view.ex02_BoundService.BoundServiceActivity" />
         <activity android:name=".view.ex01_StartService.StartServiceActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,6 +22,7 @@
 
         <service android:name=".service.StartService" />
         <service android:name=".service.BoundService" />
+        <service android:name=".service.ForegroundService"/>
     </application>
 
 </manifest>

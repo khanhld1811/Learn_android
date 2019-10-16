@@ -3,36 +3,39 @@ package com.duykhanh.musicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.duykhanh.musicplayer.service.MusicPlayService;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private AudioServiceBinder audioServiceBinder = null;
+    private MusicPlayService musicPlayService;
+    private boolean iMusicService = false;
+    private TextView mTitleSong;
+    private SeekBar mSeekBar;
+    Intent intent;
 
-    private Handler audioProgressUpdateHandler = null;
+    private boolean mIsPlaying = true;
 
-    // Show played audio progress.
-    private ProgressBar backgroundAudioProgress;
-
-    private TextView audioFileUrlTextView;
-
-    // This service connection object is the bridge between activity and background service.
-    private ServiceConnection serviceConnection = new ServiceConnection() {
+    /*
+    * Theo dõi hành động của service
+    */
+    ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            // Cast and assign background service's onBind method returned iBander object.
-            audioServiceBinder = (AudioServiceBinder) iBinder;
+            /*
+            * Tham chếu tới MusicPlayService
+            */
+            MusicPlayService.BoundMusicPlayer binder = (MusicPlayService.BoundMusicPlayer) iBinder;
+            musicPlayService = binder.getService();
         }
 
         @Override
@@ -46,120 +49,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Bind background audio service when activity is created.
-        bindAudioService();
+        /*
+        * Tạo đối tượng intent để gọi đối tượng service
+        */
+        intent = new Intent(this, MusicPlayService.class);
 
-        final String audioFileUrl = "http://www.dev2qa.com/demo/media/test.mp3";
+        /*
+        * Gọi hàm để bắt đầu boundService
+        */
+        bindService(intent, serviceConnection, BIND_AUTO_CREATE);
 
-        backgroundAudioProgress = (ProgressBar) findViewById(R.id.play_audio_in_background_service_progressbar);
-
-        // Get audio file url textview.
-        audioFileUrlTextView = (TextView) findViewById(R.id.audio_file_url_text_view);
-        if (audioFileUrlTextView != null) {
-            // Show web audio file url in the text view.
-            audioFileUrlTextView.setText("Audio File Url. \r\n" + audioFileUrl);
-        }
-
-        // Click this button to start play audio in a background service.
-        Button startBackgroundAudio = (Button) findViewById(R.id.start_audio_in_background);
-        startBackgroundAudio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Set web audio file url
-                audioServiceBinder.setAudioFileUrl(audioFileUrl);
-
-                // Web audio is a stream audio.
-                audioServiceBinder.setStreamAudio(true);
-
-                // Set application context.
-                audioServiceBinder.setContext(getApplicationContext());
-
-                // Initialize audio progress bar updater Handler object.
-                createAudioProgressbarUpdater();
-                audioServiceBinder.setAudioProgressUpdateHandler(audioProgressUpdateHandler);
-
-                // Start audio in background service.
-                audioServiceBinder.startAudio();
-
-                backgroundAudioProgress.setVisibility(ProgressBar.VISIBLE);
-
-                Toast.makeText(getApplicationContext(), "Start play web audio file.", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        // Click this button to pause the audio played in background service.
-        Button pauseBackgroundAudio = (Button) findViewById(R.id.pause_audio_in_background);
-        pauseBackgroundAudio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                audioServiceBinder.pauseAudio();
-                Toast.makeText(getApplicationContext(), "Play web audio file is paused.", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        // Click this button to stop the media player in background service.
-        Button stopBackgroundAudio = (Button) findViewById(R.id.stop_audio_in_background);
-        stopBackgroundAudio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                audioServiceBinder.stopAudio();
-                backgroundAudioProgress.setVisibility(ProgressBar.INVISIBLE);
-                Toast.makeText(getApplicationContext(), "Stop play web audio file.", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    // Bind background service with caller activity. Then this activity can use
-    // background service's AudioServiceBinder instance to invoke related methods.
-    private void bindAudioService() {
-        if (audioServiceBinder == null) {
-            Intent intent = new Intent(MainActivity.this, AudioService.class);
-
-            // Below code will invoke serviceConnection's onServiceConnected method.
-            bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-        }
-    }
-
-    // Unbound background audio service with caller activity.
-    private void unBoundAudioService() {
-        if (audioServiceBinder != null) {
-            unbindService(serviceConnection);
-        }
+        initView();
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unbindService(serviceConnection);
+        super.onStop();
+
+    }
+
+    /*
+    * Dứng service khi tắt app
+    */
+    @Override
     protected void onDestroy() {
-        // Unbound background audio service when activity is destroyed.
-        unBoundAudioService();
         super.onDestroy();
     }
 
-    // Create audio player progressbar updater.
-    // This updater is used to update progressbar to reflect audio play process.
-    private void createAudioProgressbarUpdater() {
-        /* Initialize audio progress handler. */
-        if (audioProgressUpdateHandler == null) {
-            audioProgressUpdateHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    // The update process message is sent from AudioServiceBinder class's thread object.
-                    if (msg.what == audioServiceBinder.UPDATE_AUDIO_PROGRESS_BAR) {
+    /*
+    * Ánh xạ view
+    */
+    private void initView() {
+        mTitleSong = findViewById(R.id.txtSongLabel);
+        findViewById(R.id.previous).setOnClickListener(this);
+        findViewById(R.id.play).setOnClickListener(this);
+        findViewById(R.id.next).setOnClickListener(this);
+    }
 
-                        if (audioServiceBinder != null) {
-                            // Calculate the percentage.
-                            int currProgress = audioServiceBinder.getAudioProgress();
+    /*
+    * Gắn hành động cho view
+    */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.previous:
 
-                            // Update progressbar. Make the value 10 times to show more clear UI change.
-                            backgroundAudioProgress.setProgress(currProgress * 10);
-                        }
-                    }
+                break;
+            case R.id.play:
+                if (mIsPlaying) {
+                    musicPlayService.playMusic();
+                    findViewById(R.id.play).setBackgroundResource(R.drawable.pause);
+                    mIsPlaying = false;
+                } else {
+                    musicPlayService.pauseMusic();
+                    findViewById(R.id.play).setBackgroundResource(R.drawable.ic_play_arrow_black_24dp);
+                    mIsPlaying = true;
                 }
-            };
+
+                break;
+            case R.id.next:
+
+                break;
         }
     }
 
-    @Override
-    public void onClick(View view) {
-
+    /*
+    * Phương thức stop music
+    */
+    private void stopPlayer() {
+        musicPlayService.stopMusic();
     }
 }
+

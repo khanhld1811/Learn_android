@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.duykhanh.a5l02service_demo.view.ex01_StartService.StartServiceActivity;
 import com.duykhanh.a5l02service_demo.view.ex02_BoundService.BoundServiceActivity;
+import com.duykhanh.a5l02service_demo.view.ex03_ForegroundService.ForegroundServiceActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, BoundServiceActivity.class));
+            }
+        });
+        findViewById(R.id.btn_foreground).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ForegroundServiceActivity.class));
             }
         });
 

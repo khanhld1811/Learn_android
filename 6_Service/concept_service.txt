@@ -8,6 +8,26 @@ I. Tổng quan
 vd: chơi nhạc, download,.....
 
 II. Phân loại
-    - Có 3 loại:
-        + Foreground Service: có giao diện dưới dạng notifycaction có thể tương tác với người dùng
-        
+    - Có 2 loại:
+        + startService
+        + boundService
+
+2. BoundService
+
+    * Tổn quan:
+        - Cung cấp giao diện để người dùng có thể tương tác với BoundService
+    * Sử dụng
+        - Khai báo onBind() -> trả về obj IBinder -> tạo giao diện người dùng có thể tương tác với BoundService
+        - Client(activity,...) kết nối service 
+            + Intent -> service (abc.class)
+            + bindService() 
+            + ServiceConnection : theo giỏi kết nối service -> onServiceConnected -> gửi obj IBinder client có thể sử dụng
+    
+    * Tương tác boundService:
+            + Tạo class khác kế thừ lớp Binder -> instance từ onBind() -> truy cập phương thức trong class đó hoặc trong service
+            + Tạo Message cho service -> Tạo Handler -> + service gửi message cho client
+                                                        + client gửi message cho service
+                                      
+            
+    
+    
