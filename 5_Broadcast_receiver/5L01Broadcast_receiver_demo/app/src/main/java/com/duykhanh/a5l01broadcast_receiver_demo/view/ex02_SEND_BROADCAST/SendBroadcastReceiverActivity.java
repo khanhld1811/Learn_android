@@ -21,15 +21,15 @@ public class SendBroadcastReceiverActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        ed_content_send = findViewById(R.id.ed_content_send);
-        findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("name",ed_content_send.getText().toString());
-                intent.setAction("com.android.send.CONTENT_NAME");
-                sendBroadcast(intent);
-            }
-        });
+//        ed_content_send = findViewById(R.id.ed_content_send);
+//        findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.putExtra("name",ed_content_send.getText().toString());
+//                intent.setAction("com.android.send.CONTENT_NAME");
+//                sendBroadcast(intent);
+//            }
+//        });
     }
 }

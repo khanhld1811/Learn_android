@@ -1,0 +1,58 @@
+I. OVerview
+
+    + JSON is a lightweight data-interchange format.
+    + It is easy for humans to read and write
+    + JSON is a text format that completely language independent.
+    
+    - JSON is built on two structures
+        
+        + A collection of name/value pairs. In variour language -> this is relized as an 
+                                                                    * object
+                                                                    * record
+                                                                    * struct
+                                                                    * dictionary
+                                                                    * hash table
+                                                                    * keyed list
+                                                                    * associative array
+        + An ordered list of values. In most languages this is realized as an -> + array
+                                                                                 + vector
+                                                                                 + list
+                                                                                 + sequence
+II . structures
+    1. Object
+        +   An object is an unordered set of name / value pairs.
+            An object begin with {left brace and ends with } right brace.
+            Each name is followe by: colon and the name/value pairs are separated by, comma.
+    2.Array
+        +   An array is an ordered collection of values.
+            An array begin with [left bracket and ends with ] right bracket.
+            Values are separated by , comma.
+    3.Value
+        + A value ->    * string in double quotes
+                        * number
+                        * true or false
+                        * null
+                        * object
+                        * array
+    4.String
+        + A string is sequence of zero or more Unicode characters, ->   * wrapped in double quotes
+                                                                        * backslash escapes
+
+            "   : quoation mark
+            \   : reverse solidus
+            /   : solidus
+            b   : backspace
+            f   : formfeed
+            n   : linefeed
+            r   : carrigge return
+            t   : horizontal table
+            u   : 4 hex digits
+    
+    5. Number
+
+        + Integer   : Digits 1-9, 0 and positive or negative
+        + Fractions : .3, .9
+        + Exponent  : e, e+, e-, E, E+, E-
+
+
+                                                       

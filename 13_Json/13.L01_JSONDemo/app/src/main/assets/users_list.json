@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "1087",
+      "name": "Duy Khanh",
+      "email": "info@abhiandroid.com",
+      "gender" : "male",
+      "contact": {
+        "mobile": "+84 0399 594 740",
+        "home": "00 000000",
+        "office": "00 000000"
+      }
+    },
+    {
+      "id": "1088",
+      "name": "Dinh hoang",
+      "email": "gourav9188@gmail.com",
+      "gender" : "male",
+      "contact": {
+        "mobile": "+84 0399 587 920",
+        "home": "00 000000",
+        "office": "00 000000"
+      }
+    }
+  ]
+}

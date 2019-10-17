@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onStop() {
-        unbindService(serviceConnection);
+//        unbindService(serviceConnection);
         super.onStop();
 
     }

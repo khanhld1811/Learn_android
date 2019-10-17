@@ -1,0 +1,22 @@
+I Tổng quan
+
+    - Là một layout mạnh -> có thể tạo ra các giao diện phức tạp -> Hạn chế tối da sử dụng các layout lồng nhau.
+    - Sắp xếp view con -> ràng buộc các view con , View cha -> tạo móc xích các view
+    - Hướng developer -> design trên Layout editor thay vì trong xml
+
+II. Sử dụng
+
+    - tối thiểu 2 ràng buộc ngang, dọc
+    - layout_constraintLeft_toLeftOf: Ràng buộc cạnh trái của phần tử với phần tử khác bằng id
+    - layout_constraintLeft_toRightOf: Bên trái với bên phải
+    - layout_constraintRight_toRightOf: Phải - Phải
+    - layout_constraintTop_toTopOf: trên-trên
+    - layout_constraintTop_toBottomOf: trên-dưới
+    - layout_constraintTop_toTopOf: trên-trên
+    - layout_constraintBottom_toTopOf: dưới- trên
+    - layout_constraintBottom_toBottomOf:dưới-dưới
+    - layout_constraintBaseline_toBaselineOf: Trùng baseline
+    - layout_constraintStart_toEndOf: bắt đầu - kết thúc
+    - layout_constraintStart_toStartOf: bắt đầu - bắt đầu
+    - layout_constraintEnd_toStartOf: cuối-bắt đầu
+    - layout_constraintEnd_toEndOf: cuối- cuối
