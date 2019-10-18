@@ -1,0 +1,6 @@
+I. Overview
+    - Android -> integrate google maps -> apllication
+    - Show local in map, different routes, customize according choices.
+
+II. Use
+    - SupportMapFragment -> extends Fragment
