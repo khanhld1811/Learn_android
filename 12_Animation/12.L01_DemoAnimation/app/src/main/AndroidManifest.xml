@@ -19,8 +19,11 @@
         <activity android:name=".view.ex02_ViewAnimation">
 
         </activity>
-        <activity android:name=".view.ex01_PropertyAnimation"></activity>
+        <activity android:name=".view.ex01_PropertyAnimation">
+
+        </activity>
         <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>

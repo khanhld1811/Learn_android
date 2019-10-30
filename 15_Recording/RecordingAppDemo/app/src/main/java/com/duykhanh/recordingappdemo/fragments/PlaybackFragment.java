@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Dialog play record
  * A simple {@link Fragment} subclass.
  */
 public class PlaybackFragment extends DialogFragment {
@@ -182,7 +183,6 @@ public class PlaybackFragment extends DialogFragment {
         alertDialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
         alertDialog.getButton(Dialog.BUTTON_NEGATIVE).setEnabled(false);
         alertDialog.getButton(Dialog.BUTTON_NEUTRAL).setEnabled(false);
-
     }
 
     @Override
@@ -202,7 +202,6 @@ public class PlaybackFragment extends DialogFragment {
             stopPlaying();
         }
     }
-
 
     private void onPlay(boolean isPlaying) {
         if(!isPlaying){

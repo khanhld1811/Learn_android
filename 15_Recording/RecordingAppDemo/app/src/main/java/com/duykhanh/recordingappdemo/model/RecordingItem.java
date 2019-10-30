@@ -3,6 +3,7 @@ package com.duykhanh.recordingappdemo.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/*Khai báo một đối tượng RecordingItem lưu thông tin và đường dẫn của file ghi âm*/
 public class RecordingItem implements Parcelable {
     private String mName; // file name
     private String mFilePath; //file path

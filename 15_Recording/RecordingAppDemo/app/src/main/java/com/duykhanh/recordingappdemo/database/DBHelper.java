@@ -11,6 +11,9 @@ import android.provider.BaseColumns;
 import com.duykhanh.recordingappdemo.listeners.OnDatabaseChangedListener;
 import com.duykhanh.recordingappdemo.model.RecordingItem;
 
+/*
+* Database save infomation file recording
+*/
 import java.util.Comparator;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -64,6 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
         mOnDatabaseChangedListener = listener;
     }
 
+    // TODO: Get item recording in database
     public RecordingItem getItemAt(int position) {
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = {
@@ -87,12 +91,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    //TODO: Delete item recording in database
     public void removeItemWithId(int id) {
         SQLiteDatabase db = getWritableDatabase();
         String[] whereArgs = { String.valueOf(id) };
         db.delete(DBHelperItem.TABLE_NAME, "_ID=?", whereArgs);
     }
 
+    //TODO: Get count item in database
     public int getCount() {
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = { DBHelperItem._ID };
@@ -106,14 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return mContext;
     }
 
-    public class RecordingComparator implements Comparator<RecordingItem> {
-        public int compare(RecordingItem item1, RecordingItem item2) {
-            Long o1 = item1.getTime();
-            Long o2 = item2.getTime();
-            return o2.compareTo(o1);
-        }
-    }
-
+    // TODO: Add recording file item in database
     public long addRecording(String recordingName, String filePath, long length) {
 
         SQLiteDatabase db = getWritableDatabase();
@@ -131,6 +130,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return rowId;
     }
 
+    //TODO: Rename item file recording
     public void renameItem(RecordingItem item, String recordingName, String filePath) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -144,18 +144,4 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public long restoreRecording(RecordingItem item) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(DBHelperItem.COLUMN_NAME_RECORDING_NAME, item.getName());
-        cv.put(DBHelperItem.COLUMN_NAME_RECORDING_FILE_PATH, item.getFilePath());
-        cv.put(DBHelperItem.COLUMN_NAME_RECORDING_LENGTH, item.getLength());
-        cv.put(DBHelperItem.COLUMN_NAME_TIME_ADDED, item.getTime());
-        cv.put(DBHelperItem._ID, item.getId());
-        long rowId = db.insert(DBHelperItem.TABLE_NAME, null, cv);
-        if (mOnDatabaseChangedListener != null) {
-            //mOnDatabaseChangedListener.onNewDatabaseEntryAdded();
-        }
-        return rowId;
-    }
 }

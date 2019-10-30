@@ -4,9 +4,27 @@ I Tổng quan
     - Sắp xếp view con -> ràng buộc các view con , View cha -> tạo móc xích các view
     - Hướng developer -> design trên Layout editor thay vì trong xml
 
-II. Sử dụng
+II.Phân loại
+    + Relative positioning
+        * Horizontal Axis: left, right, start, end sides
+        * Vertical Axis: top, bottom sides and text baseline
+    + Margins
+    + Centering positioning
+    + Circular positioning
+    + Visibility behavior
+    + Dimension constraints
+    + Chains
+    + Virtual Helpers objects
+    + Optimizer
+
+
+
+III. Sử dụng
 
     - tối thiểu 2 ràng buộc ngang, dọc
+
+Relative positioning
+
     - layout_constraintLeft_toLeftOf: Ràng buộc cạnh trái của phần tử với phần tử khác bằng id
     - layout_constraintLeft_toRightOf: Bên trái với bên phải
     - layout_constraintRight_toRightOf: Phải - Phải
@@ -20,3 +38,113 @@ II. Sử dụng
     - layout_constraintStart_toStartOf: bắt đầu - bắt đầu
     - layout_constraintEnd_toStartOf: cuối-bắt đầu
     - layout_constraintEnd_toEndOf: cuối- cuối
+
+    layout_constraintLeft_toLeftOf:id
+    use id
+
+Margins
+    - android:layout_marginStart
+    - android:layout_marginEnd
+    - android:layout_marginEnd
+    - android:layout_marginTop
+    - android:layout_marginRight
+    - android:layout_marginBottom
+
+   GONE widget
+
+   - layout_goneMarginStart
+   - layout_goneMarginEnd
+   - layout_goneMarginLeft
+   - layout_goneMarginTop
+   - layout_goneMarginRight
+   - layout_goneMarginBottom
+
+Centering positioning and bias
+
+    - layout_constraintLeft_toLeftOf: Ràng buộc cạnh trái của phần tử với phần tử khác bằng id
+    - layout_constraintLeft_toRightOf: Bên trái với bên phải
+    - layout_constraintRight_toRightOf: Phải - Phải
+    - layout_constraintTop_toTopOf: trên-trên
+    - layout_constraintTop_toBottomOf: trên-dưới
+    - layout_constraintTop_toTopOf: trên-trên
+    - layout_constraintBottom_toTopOf: dưới- trên
+    - layout_constraintBottom_toBottomOf:dưới-dưới
+    - layout_constraintBaseline_toBaselineOf: Trùng baseline
+    - layout_constraintStart_toEndOf: bắt đầu - kết thúc
+    - layout_constraintStart_toStartOf: bắt đầu - bắt đầu
+    - layout_constraintEnd_toStartOf: cuối-bắt đầu
+    - layout_constraintEnd_toEndOf: cuối- cuối
+
+    user parent - layout_constraintLeft_toLeftOf: parent
+    bind to the parent element that contains it
+
+    Bias:
+        tweak the positioning favor one side with another 
+        - layout_constraintHorizontal_bias
+        - layout_constraintVertical_bias
+
+Circular positioning
+    - layout_constraintCircle : references another widget id
+    - layout_constraintCircleRadius : the distance to the other widget center
+    - layout_constraintCircleAngle : which angle the widget should be at (in degrees, from 0 to 360)
+
+
+Visibility behavior
+    GONE -> widget hidden
+
+Dimensions constraint
+
+    Minimum dimensions on constraintLayout
+        - android:minWidth set the minimum width for the layout
+        - android:minHeight set the minimum height for the layout
+        - android:maxWidth set the maximum width for the layout
+        - android:maxHeight set the maximum height for the layout
+    
+    widgets dimension constraints
+        - android:layout_width
+        - android:layout_height
+
+        * MATCH_PARENT: the corresponding left/right or top/bottom constraints being set to "parent"
+        * WRAP_CONTENT: Depends on the actual size of the view 
+                        Keep enforcing constraints to limit the resulting dimension:
+
+                            + app:layout_constrainedWidth=”true|false”
+                            + app:layout_constrainedHeight=”true|false”
+
+        * MATCH_CONSTRAINT:
+                            + layout_constraintWidth_min    : set the minimum size for this dimension
+                            + layout_constraintHeight_min   : set the minimum size for this dimension
+
+                            + layout_constraintWidth_max    : set the maximum size for this dimension
+                            + layout_constraintHeight_max   : set the maximum size for this dimension
+
+                            + layout_constraintWidth_percent    : set the size this dimension as a percentage fo the parent
+                            + layout_constraintHeight_percent    : set the size this dimension as a percentage fo the parent
+
+        * Percent dimension
+            * The dimension should be set to MATCH_CONSTRAINT
+            * The default should be set to percent:
+                + app:layout_constraintWidth_default="percent"
+                + app:layout_constraintHeight_default="percent"
+            
+            * Then set the 
+                + layout_constraintWidth_percent : 0 -> 1
+                + layout_constraintHeight_percent : 0 -> 1
+
+
+        * Ratio
+            - least one constrained dimension be set to 0dp
+            - layout_constraintDimensionRatio :
+                                                + a float value, ratio between width and height
+                                                + a ratio in the form "width:height"
+            - Constraint one specific <- dimensions width, height  (W, H)
+                ex:  app:layout_constraintDimensionRatio="H,16:9"
+                ex:  app:layout_constraintDimensionRatio="W,9:16"
+        
+        * Chains
+            - 
+
+
+                            
+
+

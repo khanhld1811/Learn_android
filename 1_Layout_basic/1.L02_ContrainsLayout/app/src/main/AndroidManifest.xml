@@ -9,13 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.VirtualHelperObjectActivity"></activity>
+        <activity android:name=".view.ChainsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.RatioActivity" />
+        <activity android:name=".view.WidgetsDimensionActivity" />
+        <activity android:name=".view.MinimumDimensionsActivity" />
+        <activity android:name=".view.CircularPositioningActivity" />
+        <activity android:name=".view.BiasActivity" />
+        <activity android:name=".view.CenteringPositioningActivity" />
+        <activity android:name=".view.MarginActivity"></activity>
+        <activity android:name=".view.RelativePositioningActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

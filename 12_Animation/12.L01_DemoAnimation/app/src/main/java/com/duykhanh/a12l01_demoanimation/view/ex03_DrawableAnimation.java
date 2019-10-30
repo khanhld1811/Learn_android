@@ -20,7 +20,6 @@ public class ex03_DrawableAnimation extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.imageBackground);
 
-
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,5 +27,4 @@ public class ex03_DrawableAnimation extends AppCompatActivity {
             }
         });
     }
-
 }

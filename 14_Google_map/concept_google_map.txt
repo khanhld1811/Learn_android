@@ -3,4 +3,23 @@ I. Overview
     - Show local in map, different routes, customize according choices.
 
 II. Use
+
     - SupportMapFragment -> extends Fragment
+    - onMapReady(GoogleMap googleMap) : Called when the map is ready to be used.
+
+
+2.Polylines and Polygons to Represent Routes and Areas
+    - polylines : chuỗi các đường thẳng kết nối từ các diểm hiển thị trên map
+                + path          : mảng obj LatLong (các điểm đi qua)
+                + strokeColor   : mã màu hệ số hexa hiển thị polyline
+                + strokeOpacity : là 1 số từ 0.0 đến 1.0 độ mờ polyline
+                + strokeWeight  : độ rộng polyline theo px
+    - Polygons:
+                + path: chuỗi các đường thẳng kết nối từ các diểm hiển thị trên map
+                        có điểm bắt đầu và kết thúc
+                + fillColor: mã màu hệ số hexa -> hiển thị vùng bên trong Polygons
+                + fillOpcity: độ mờ của vùng bên trong polygon
+
+3. Select Current Place and show Detail on a map
+    - GeoDataClient -> Google's database -> local place and business information.
+    - PlaceDetectionClient -> current place, location device -> particular place.

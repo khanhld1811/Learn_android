@@ -1,0 +1,46 @@
+I. Directions Requests
+    - A Directions API request takes the following form:
+        * https://maps.googleapis.com/maps/api/directions/outputFormat?parameters
+
+        + outputFormat: json, xml.
+
+II. Request Parameters
+
+1. Required parameters
+
+    + origin :  * The address
+                * Textual
+                * latitude/longtitude
+                * ID calculate directions.
+
+        - Pass a address -> convert latitude/longtitude
+            origin=24_Sussex+Drive+Ottawa+origin
+
+        - Pass coordinates -> calculate directions
+            origin=41.43206,-81.38992
+
+        - Place IDs (place_id:)
+
+    + destination:  * The address
+                    * Textual
+                    * latitude/longtidude
+                    * ID calculate directions
+
+    + key: API key
+
+2. Optional parameters
+    + mode (defaults to driving): Specifies the mode of transport to use when calculating directions.
+    + waypoints: Specifies an array of intermediate localtions to include along the route between the
+      origin and destination point as pass through or stopover localtions.
+
+        * latitude/longtidude an explicit value pair.
+            (--34.92788%2C138.60008 comma, no space)
+        
+        * Place ID: The unique value specific to a localtions.
+            (ChIJGwVKWe5w44kRcr4b9E25-Go)
+        
+        * Address string (VietName, ThaiLand)
+
+        * Encoded polyline that can be specified by a set of any of the above.
+            (enc:lexeF{~wsZejrPjtye@:)
+     

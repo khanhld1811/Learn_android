@@ -22,6 +22,9 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/*
+*   Allows recording with service
+*/
 public class RecordingService extends Service {
 
 
@@ -75,7 +78,6 @@ public class RecordingService extends Service {
 
     public void startRecording() {
         setFileNameAndPath();
-
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -83,27 +85,23 @@ public class RecordingService extends Service {
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         mRecorder.setAudioChannels(1);
 
-            mRecorder.setAudioSamplingRate(44100);
-            mRecorder.setAudioEncodingBitRate(192000);
-
-
         try {
             mRecorder.prepare();
             mRecorder.start();
             mStartingTimeMillis = System.currentTimeMillis();
 
-            //startTimer();
-            //startForeground(1, createNotification());
+//            startTimer();
+//            startForeground(1, createNotification());
 
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }
     }
 
-    public void setFileNameAndPath(){
+    public void setFileNameAndPath() {
         int count = 0;
         File f;
-        do{
+        do {
             count++;
 
             mFileName = getString(R.string.default_file_name)
@@ -112,7 +110,7 @@ public class RecordingService extends Service {
             mFilePath += "/SoundRecorder/" + mFileName;
 
             f = new File(mFilePath);
-        }while (f.exists() && !f.isDirectory());
+        } while (f.exists() && !f.isDirectory());
     }
 
     public void stopRecording() {
@@ -132,38 +130,38 @@ public class RecordingService extends Service {
         try {
             mDatabase.addRecording(mFileName, mFilePath, mElapsedMillis);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(LOG_TAG, "exception", e);
         }
     }
-
-    private void startTimer() {
-        mTimer = new Timer();
-        mIncrementTimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                mElapsedSeconds++;
-                if (onTimerChangedListener != null)
-                    onTimerChangedListener.onTimerChanged(mElapsedSeconds);
-                NotificationManager mgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                mgr.notify(1, createNotification());
-            }
-        };
-        mTimer.scheduleAtFixedRate(mIncrementTimerTask, 1000, 1000);
-    }
-
-    //TODO:
-    private Notification createNotification() {
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(getApplicationContext())
-                        .setSmallIcon(R.drawable.ic_mic_white_36dp)
-                        .setContentTitle(getString(R.string.notification_recording))
-                        .setContentText(mTimerFormat.format(mElapsedSeconds * 1000))
-                        .setOngoing(true);
-
-        mBuilder.setContentIntent(PendingIntent.getActivities(getApplicationContext(), 0,
-                new Intent[]{new Intent(getApplicationContext(), MainActivity.class)}, 0));
-
-        return mBuilder.build();
-    }
 }
+//    private void startTimer() {
+//        mTimer = new Timer();
+//        mIncrementTimerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                mElapsedSeconds++;
+//                if (onTimerChangedListener != null)
+//                    onTimerChangedListener.onTimerChanged(mElapsedSeconds);
+//                NotificationManager mgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                mgr.notify(1, createNotification());
+//            }
+//        };
+//        mTimer.scheduleAtFixedRate(mIncrementTimerTask, 1000, 1000);
+//    }
+//
+//    //TODO: set Notification when recording
+//    private Notification createNotification() {
+//        NotificationCompat.Builder mBuilder =
+//                new NotificationCompat.Builder(getApplicationContext())
+//                        .setSmallIcon(R.drawable.ic_mic_white_36dp)
+//                        .setContentTitle(getString(R.string.notification_recording))
+//                        .setContentText(mTimerFormat.format(mElapsedSeconds * 1000))
+//                        .setOngoing(true);
+//
+//        mBuilder.setContentIntent(PendingIntent.getActivities(getApplicationContext(), 0,
+//                new Intent[]{new Intent(getApplicationContext(), MainActivity.class)}, 0));
+//
+//        return mBuilder.build();
+//    }
+//}

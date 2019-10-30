@@ -1,5 +1,6 @@
 package com.duykhanh.recordingappdemo.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,10 +32,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+/*
+* Thiết lập dữ liệu đổ vào view và chạy file ghi âm
+*/
 public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.RecordingsViewHolder>
     implements OnDatabaseChangedListener {
 
     private static final String LOG_TAG = "FileViewerAdapter";
+    private static final String TAG = FileViewerAdapter.class.getSimpleName();
 
     private DBHelper mDatabase;
 
@@ -49,15 +54,17 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
         llm = linearLayoutManager;
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull final RecordingsViewHolder holder, int position) {
 
         item = getItem(position);
         long itemDuration = item.getLength();
 
-        long minutes = TimeUnit.MICROSECONDS.toMinutes(itemDuration);
-        long seconds = TimeUnit.MICROSECONDS.toSeconds(itemDuration)
+        final long minutes = TimeUnit.MILLISECONDS.toMinutes(itemDuration);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(itemDuration)
                 - TimeUnit.MINUTES.toSeconds(minutes);
+
 
         holder.tvName.setText(item.getName());
         holder.tvLength.setText(String.format("%02d:%02d",minutes,seconds));
@@ -92,7 +99,7 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
             public boolean onLongClick(View view) {
 
                 ArrayList<String> entrys = new ArrayList<>();
-                entrys.add(mContext.getString(R.string.dialog_file_share));
+
                 entrys.add(mContext.getString(R.string.dialog_file_rename));
                 entrys.add(mContext.getString(R.string.dialog_file_delete));
 
@@ -105,13 +112,9 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
                         if(item == 0){
-                            shareFileDialog(holder.getPosition());
-                        }
-                        // fix
-                        if(item == 1){
                             renameFileDialog(holder.getPosition());
                         }
-                        else if(item == 2){
+                        else if(item == 1){
                             deleteFileDialog(holder.getPosition());
                         }
                     }
@@ -133,8 +136,7 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
         });
     }
 
-    private void shareFileDialog(int position) {
-    }
+
 
     @Override
     public int getItemCount() {
@@ -208,22 +210,14 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
         if(f.exists() && !f.isDirectory()){
             //file name is not unique, cannot rename file.
             Toast.makeText(mContext, String.format(mContext.getString(R.string.toast_file_exists),name), Toast.LENGTH_SHORT).show();
-
         }else{
             //file name is unique, rename file
             File oldFilePath = new File(getItem(position).getFilePath());
+            Log.d(TAG, "rename: "+f);
             oldFilePath.renameTo(f);
             mDatabase.renameItem(getItem(position),name,mFilePath);
             notifyItemChanged(position);
         }
-    }
-
-    public void sahreFileDialog(int position){
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(getItem(position).getFilePath())));
-        shareIntent.setType("audio/mp4");
-        mContext.startActivity(Intent.createChooser(shareIntent,mContext.getText(R.string.send_to)));
     }
 
     public void renameFileDialog (final int position){
