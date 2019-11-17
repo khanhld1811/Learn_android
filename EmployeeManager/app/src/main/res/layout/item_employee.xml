@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="@dimen/paddingItemEmployeeLeft"
+        android:paddingTop="@dimen/paddingItemEmployeeTop"
+        android:paddingRight="@dimen/paddingItemEmployeeRight"
+        android:paddingBottom="@dimen/paddingItemEmployeeBottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="@dimen/paddingItemEmployeeLeft"
+            android:layout_toRightOf="@+id/imgUser"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/seguisb"
+                android:text="@string/fullname"
+                android:textColor="@color/colorBlack"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/segoeuil"
+                android:text="@string/position"
+                android:textColor="@color/colorBlack"
+                android:textSize="19sp" />
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUser"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/user" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="380dp"
+        android:layout_height="0.5dp"
+        android:layout_gravity="center|bottom"
+        android:background="@android:color/darker_gray"/>
+</androidx.cardview.widget.CardView>
+

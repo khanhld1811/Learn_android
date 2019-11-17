@@ -14,7 +14,6 @@ import com.duykhanh.recordingappdemo.model.RecordingItem;
 /*
 * Database save infomation file recording
 */
-import java.util.Comparator;
 
 public class DBHelper extends SQLiteOpenHelper {
     private Context mContext;

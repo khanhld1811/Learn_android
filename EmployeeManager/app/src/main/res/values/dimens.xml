@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingItemEmployeeTop">24dp</dimen>
+    <dimen name="paddingItemEmployeeTop_16">16dp</dimen>
+    <dimen name="paddingItemEmployeeBottom">24dp</dimen>
+    <dimen name="paddingItemEmployeeRight">16dp</dimen>
+    <dimen name="paddingItemEmployeeLeft">16dp</dimen>
+    <dimen name="image_employee_config_item_photo_height" >200dp</dimen>
+
+    <dimen name="btn_material_size">48dp</dimen>
+    <dimen name="image_employee_config_add_photo_padding">8dp</dimen>
+
+    <dimen name="guideline_employee_config_horizontal_keyline">16dp</dimen>
+</resources>
